@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: service-cronjob-consume-queue
+  namespace: pipax-dev
+spec:
+  schedule: "*/2 * * * *" #At every 2nd minute. https://crontab.guru/#*/2_*_*_*_*
+  suspend: false
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+          - name: service-cronjob
+            image: DOCKER_IMAGE_NAME
+            envFrom:
+            - secretRef:
+                name: service-app-secret
+            - configMapRef:
+                name: service-app-config
+            args:
+            - /bin/sh
+            - /app/etc/docker/bin/consume_queue.sh
+          restartPolicy: OnFailure

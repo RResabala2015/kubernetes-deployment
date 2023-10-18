@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kong-pipax-dev-service-app-ingress
+  namespace: pipax-dev
+  #@see https://docs.konghq.com/kubernetes-ingress-controller/2.0.x/guides/using-rewrites/#rewriting-the-path
+  annotations:
+    konghq.com/methods: GET, OPTIONS
+    konghq.com/preserve-host: "true"
+    konghq.com/strip-path: "true"
+    kubernetes.io/ingress.class: kong
+spec:
+  #  ingressClassName: kong
+  rules:
+    - host: pipax-dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: service-app
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - "https://pipax-dev.com"
+      secretName: wildcard-fbr-group
+status:
+  loadBalancer:
+    ingress:
+      - ip: IP

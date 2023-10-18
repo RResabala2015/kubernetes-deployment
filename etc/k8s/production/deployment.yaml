@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: service-app
+  name: service-deployment
+  namespace: pipax-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        namespace: pipax-dev
+        app: service-app
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: service-app-kernel
+          image: DOCKER_IMAGE_NAME
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          securityContext:
+            capabilities:
+              add:
+                - SYS_PTRACE
+          envFrom:
+            - configMapRef:
+                name: service-app-config
+            - secretRef:
+                name: service-app-secret
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi      

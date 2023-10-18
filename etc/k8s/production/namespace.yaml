@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pipax-dev
+  labels:
+    name: service-app
+
