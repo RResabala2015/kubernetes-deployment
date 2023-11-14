@@ -35,4 +35,4 @@ kubectl apply -f deployment.yaml
 
 ## 📜 License
 
-This project is licensed under the terms of the [LICENSE](https://github.com/RResabala2015/kubernetes-deployment/blob/main/LICENSE).
+This project is licensed under the terms of the [MIT License](https://github.com/RResabala2015/kubernetes-deployment/blob/main/LICENSE).
