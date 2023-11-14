@@ -10,13 +10,13 @@ This project offers various configurations for continuous deployment to Kubernet
 - **`/google-cloud`**: Holds the `production.cd.cloud-build.yaml` file for Google Cloud build configurations.
 - **`/k8s/production`**:
   - `config.yaml`: Base Kubernetes configuration file.
-  - -`cronjob-consume-queue.yaml`: Kubernetes cron job for queue consumption tasks.
-  - -`cronjob.yaml`: General Kubernetes cron jobs.
-  - -`deployment.yaml`: Kubernetes deployment configurations.
-  - -`hpa.yaml`: Horizontal Pod Autoscaler configurations.
-  - -`ingress.yaml`: Ingress resource definitions.
-  - -`namespace.yaml`: Namespace specifications for Kubernetes.
-  - -`service.yaml`: Service definitions for exposing applications.
+  - `cronjob-consume-queue.yaml`: Kubernetes cron job for queue consumption tasks.
+  - `cronjob.yaml`: General Kubernetes cron jobs.
+  - `deployment.yaml`: Kubernetes deployment configurations.
+  - `hpa.yaml`: Horizontal Pod Autoscaler configurations.
+  - `ingress.yaml`: Ingress resource definitions.
+  - `namespace.yaml`: Namespace specifications for Kubernetes.
+  - `service.yaml`: Service definitions for exposing applications.
 
 ## 🛠 Installation & Deployment
 
